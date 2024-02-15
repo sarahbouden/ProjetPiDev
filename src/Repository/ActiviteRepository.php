@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\Activité;
+use App\Entity\Activite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Activité>
+ * @extends ServiceEntityRepository<Activite>
  *
- * @method Activité|null find($id, $lockMode = null, $lockVersion = null)
- * @method Activité|null findOneBy(array $criteria, array $orderBy = null)
- * @method Activité[]    findAll()
- * @method Activité[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Activite|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Activite|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Activite[]    findAll()
+ * @method Activite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ActivitéRepository extends ServiceEntityRepository
+class ActiviteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Activité::class);
+        parent::__construct($registry, Activite::class);
     }
 
 //    /**
-//     * @return Activité[] Returns an array of Activité objects
+//     * @return Activite[] Returns an array of Activite objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class ActivitéRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Activité
+//    public function findOneBySomeField($value): ?Activite
 //    {
 //        return $this->createQueryBuilder('a')
 //            ->andWhere('a.exampleField = :val')
