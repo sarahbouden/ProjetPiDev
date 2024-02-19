@@ -34,11 +34,11 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $Pwd = null;
 
-    #[ORM\Column(type: Types::ARRAY)]
-    private array $Role = [];
+    #[ORM\Column(length: 255)]
+    private ?string $Role = null;
 
     #[ORM\ManyToOne(inversedBy: 'Client')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private ?Reservation $reservation = null;
 
     #[ORM\ManyToMany(targetEntity: Challenge::class, mappedBy: 'Participants')]
@@ -129,12 +129,12 @@ class User
         return $this;
     }
 
-    public function getRole(): array
+    public function getRole(): ?string
     {
         return $this->Role;
     }
 
-    public function setRole(array $Role): static
+    public function setRole(string $Role): static
     {
         $this->Role = $Role;
 

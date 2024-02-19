@@ -31,7 +31,7 @@ class Challenge
     #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'challenges')]
     private Collection $Participants;
 
-    #[ORM\ManyToMany(targetEntity: Activité::class, inversedBy: 'challenges')]
+    #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'challenges')]
     private Collection $Activity;
 
     public function __construct()
@@ -118,14 +118,14 @@ class Challenge
     }
 
     /**
-     * @return Collection<int, Activité>
+     * @return Collection<int, Activite>
      */
     public function getActivity(): Collection
     {
         return $this->Activity;
     }
 
-    public function addActivity(Activité $activity): static
+    public function addActivity(Activite $activity): static
     {
         if (!$this->Activity->contains($activity)) {
             $this->Activity->add($activity);
@@ -134,7 +134,7 @@ class Challenge
         return $this;
     }
 
-    public function removeActivity(Activité $activity): static
+    public function removeActivity(Activite $activity): static
     {
         $this->Activity->removeElement($activity);
 
