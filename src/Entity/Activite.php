@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ActivitéRepository;
+use App\Repository\ActiviteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ActivitéRepository::class)]
-class Activité
+#[ORM\Entity(repositoryClass: ActiviteRepository::class)]
+class Activite
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
