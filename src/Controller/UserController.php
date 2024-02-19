@@ -15,4 +15,11 @@ class UserController extends AbstractController
             'controller_name' => 'UserController',
         ]);
     }
+    #[Route('/index', name: 'ammm')]
+    public function hello(): Response
+    {
+        return $this->render('base-front.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
+    }
 }
