@@ -1,0 +1,53 @@
+{% extends "base-back.html.twig" %}
+{% block title %}
+User Dashboard
+{% endblock %}
+{% block body %} 
+  <main id="main" class="main">
+<div class="col-lg-12">
+  <div class="col-lg-6">
+      <a href="{{path('addAdmin')}}" class="btn btn-warning">Add Admin</a>
+    </div>
+  </div>
+          <div class="card">
+            <div class="card-body">
+            
+              <h5 class="card-title">Current Users</h5>
+
+              <!-- Table with stripped rows -->
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">#ID</th>
+                    <th scope="col">CIN</th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Adresse</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">edit</th>
+                    <th scope="col">modify</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {%for a in users %} 
+                  <tr>  
+                    <th scope="row">{{a.id}}</th>
+                    <td>{{a.cin}}</td>
+                    <td>{{a.UserName}}</td>
+                    <td>{{a.Email}}</td>
+                    <td>{{a.Adresse}}</td>
+                    <td>{{a.NumTel}}</td>
+                    <td>{{a.Pwd}}</td>
+                    <td>{{a.Role}}</td>
+                    <td><a href="{{path('updateuser',{'id':a.id})}}"><button type="button" class="btn btn-primary">edit</button></td>
+                    <td><a href="{{path('deleteuser',{'id':a.id})}}"><button type="button" class="btn btn-danger">delete</button></a></td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+</main>
+{% endblock %}

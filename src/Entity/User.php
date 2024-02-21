@@ -6,6 +6,7 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -16,22 +17,40 @@ class User
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column]
+    #[ORM\Column(unique:true)]
+    #[Assert\NotBlank(message:"Cin is required")]
+    #[Assert\Length(
+        min: 8,
+        max: 8,
+        minMessage:"length should be 8",
+        maxMessage:"length should be 8")]
     private ?int $CIN = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"User name is required")]
     private ?string $UserName = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, unique:true)]
+    #[Assert\NotBlank(message:"Email is required")]
+    #[Assert\Email(message:"The email '{{value}}' is not a valid email")]
     private ?string $Email = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Adresse is required")]
+
     private ?string $Adresse = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"Phone number is required")]
+    #[Assert\Length(
+        min: 8,
+        max: 8,
+        minMessage:"length should be 8",
+        maxMessage:"length should be 8")]
     private ?int $NumTel = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Cin is required")]
     private ?string $Pwd = null;
 
     #[ORM\Column(length: 255)]
