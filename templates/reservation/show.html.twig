@@ -1,0 +1,42 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Reservation{% endblock %}
+
+{% block body %}
+<main id="main" class="main" >
+
+    <h1>Reservation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ reservation.id }}</td>
+            </tr>
+            <tr>
+                <th>Date Debut Reservation</th>
+                <td>{{ reservation.DateDebutR ? reservation.DateDebutR|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date Fin Reservation</th>
+                <td>{{ reservation.DateFinR ? reservation.DateFinR|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nombre De Personnes</th>
+                <td>{{ reservation.NbrPerso }}</td>
+            </tr>
+            <tr>
+                <th>TypeRoom</th>
+                <td>{{ reservation.TypeRoom }}</td>
+            </tr>
+            <tr>
+                <th>Id Client</th>
+                <td>{{ reservation.IdClent }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_reservation_index') }}" class="btn btn-primary ms-auto"><em>back to list</em></a>                
+
+    </main>
+{% endblock %}

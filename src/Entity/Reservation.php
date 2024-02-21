@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: ReservationRepository::class)]
 class Reservation
@@ -17,15 +19,32 @@ class Reservation
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotBlank(message:"The start date cannot be blank.")]
+    #[Assert\GreaterThan(
+         value:"today",
+         message:"The start date must be after or on today")]
+   
     private ?\DateTimeInterface $DateDebutR = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotBlank(message:"The end date cannot be blank.")]
+    #[Assert\Expression(
+        "this.getDateFinR() >= this.getDateDebutR()",
+        message:"The end date must be after the start date."
+    )]
+    
     private ?\DateTimeInterface $DateFinR = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message:"The number of people attending cannot be blank.")]
+     #[Assert\Type(
+        type: 'integer',
+        message: 'The value {{ value }} is not a valid {{ type }}.',
+    )]
     private ?int $NbrPerso = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"Write room number and type : single,double or triple")]
     private ?string $TypeRoom = null;
 
     #[ORM\ManyToOne(inversedBy: 'reservation')]
@@ -33,6 +52,11 @@ class Reservation
     private ?Hotel $IdHotel = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message:"You ID attending cannot be blank.")]
+     #[Assert\Regex(
+        pattern:"/^\d+$/",
+        message:"Only numbers are allowed"
+    )]
     private ?string $IdClent = null;
 
     #[ORM\OneToMany(mappedBy: 'reservation', targetEntity: User::class)]

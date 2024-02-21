@@ -1,0 +1,18 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit Reservation{% endblock %}
+
+{% block body %}
+<main id="main" class="main" >
+
+    <h1>Edit Reservation</h1>
+
+    {{ include('reservation/_form.html.twig', {'button_label': 'Update'}) }}
+    
+
+    <a href="{{ path('app_reservation_index') }}"class="btn btn-primary ms-auto">Back to list</a>
+    <a href="{{ path('app_reservation_delete', {'id': reservation.id}) }}"class="btn btn-primary ms-auto">Delete</a>
+
+    
+    </main>
+{% endblock %}

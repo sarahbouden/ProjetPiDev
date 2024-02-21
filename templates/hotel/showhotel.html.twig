@@ -1,0 +1,41 @@
+{% extends 'base-back.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-right mb-4 text-warning">Détails de l'Hotel</h1>
+         <div class="col-md-8 order-md-last">
+            <div class="col-md-8">
+               <div class="card-body text-cright">
+                    <div class="card-body">
+                         <div class="mb-3">  
+                        <strong><em><u>NameH</u></em></strong>
+                        <p>{{ hotels.NameH }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong><em><u>Location:</u></em></strong>
+                        <p>{{ hotels.Location }}</p>
+                    </div>
+                    <div class="mb-3">
+                        <strong><em><u>Description</u></em></strong>
+                        <p>{{ hotels.Description }}</p>
+                    </div>  
+                    <div class="card-footer text-center">
+                        <a href="{{ path('app_hotel') }}" class="btn btn-primary"><em>Retour à la liste des hotels</em></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 order-md-first">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{{ hotels.PhotoUrl }}" target="_blank">
+                            <img src="{{ hotels.PhotoUrl }}" alt="Hotel Image" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+       
+
+    </div>
+{% endblock %}
