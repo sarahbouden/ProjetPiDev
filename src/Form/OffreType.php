@@ -16,6 +16,7 @@ class OffreType extends AbstractType
             ->add('DescriptionOffre')
             ->add('DateExp')
             ->add('Partenaire')
+            ->add('PhotoURL')
         ;
     }
 

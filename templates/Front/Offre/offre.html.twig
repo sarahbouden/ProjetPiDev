@@ -1,0 +1,304 @@
+{% extends "base-front.html.twig" %}
+
+
+{% block body %}
+ <link href="{{asset('frontTemp/css/partenaire.css')}}" rel="stylesheet">
+ <main id="main"class="main">
+ 
+ <h3 class="text-center" style="margin-top: 50px; position: relative;">
+            <span class="left-line"></span> NOS OFFRES <span class="right-line"></span>
+        </h3>
+   
+
+    <div class="billeterie-container">
+    {% for offre in offres %}
+        <div class="item-container">
+            <button class="action">CHOISIR</button>
+
+            <div class="image-container" style=style="margin-top: 20px; margin-left: 50px;">
+                    <a href="{{ offre.PhotoUrl }}" target="_blank">
+                        <img src="{{ offre.PhotoUrl }}" alt="offre Image" class="img-fluid rounded">
+                    </a>
+                </div>
+            
+            
+            <div class="body-container">
+                <div class="overlay"style="width: 100%; height: auto;"></div>
+                
+
+                    <div class="event-info">
+                        <p class="title">{{ offre.getNomOffre() }}</p>
+                        <div class="separator"></div>
+                        <p class="info"><strong>Description:</strong> {{ offre.getDescriptionOffre() }}</p>
+                        <p class="date"><strong>Date:</strong> {{ offre.getDateExp().format('Y-m-d') }}</p>
+                    </div>
+                
+           
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{%  block cookies %}
+<style>
+
+
+ {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #cecece;
+    font-size: 14px;
+}
+
+.cookies-card {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    width: 350px;
+    background-color: #242424;
+    padding: 1.5em;
+}
+
+.cookies-card * {
+    color: #fff;
+}
+
+.title {
+    font-size: 1.6em;
+    letter-spacing: 0.4px;
+    margin-bottom: 0.5em;
+}
+
+.info {
+    line-height: 1.4em;
+    letter-spacing: 0.4px;
+    margin-bottom: 2em;
+}
+
+.cta {
+    border: none;
+    outline: none;
+    padding: 0.8em 1.5em;
+    background-color: black;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.cta:hover {
+    background-color: #c37535;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid;
+    transition: color 0.4s;
+}
+
+a.settings {
+    color: #bbb;
+    margin-left: 1em;
+    border-bottom: none;
+}
+
+a:hover {
+    color: #3c9e66;
+}
+.left-line,
+.right-line {
+    position: absolute;
+    height: 1px;
+    width: 40%;
+    background-color: rgba(0,0,0,.125);
+}
+@media screen and (max-width:800px){
+    .left-line,
+.right-line {
+    width: 32%;
+}
+}
+
+.left-line {
+    top: 50%;
+    left: 0;
+}
+
+.right-line {
+    top: 50%;
+    right: 0;
+}
+
+.billeterie-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.item-container {
+    position: relative;
+    margin: 24px;
+    width: 320px;
+    height: 570px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.img-container,
+.body-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.img-container img {
+    width: 100%;
+    height: 70%;
+    
+}
+
+.body-container {
+    position: relative;
+}
+
+.overlay {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: rgba(24, 83, 122, 0.6);
+    opacity: 0;
+    transition: height linear 0.4s, opacity linear 0.2s;
+}
+
+.item-container:hover .overlay {
+    opacity: 1;
+    height: 150px;
+}
+
+.event-info {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+.title,
+.price {
+    color: #e30713;
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin: 12px;
+}
+
+.info {
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.separator {
+    width: 20%;
+    height: 6px;
+    background-color: #e30713;
+    margin-bottom: 16px;
+}
+
+.additional-info {
+    border-top: 1px solid #bbb;
+    margin-top: 12px;
+    padding: 28px;
+    padding-bottom: 0;
+}
+
+.additional-info .info {
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.action {
+    color: #fff;
+    border: 3px solid #fff;
+    background-color: transparent;
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    outline: none;
+    cursor: pointer;
+    padding: 12px;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    transition: background-color 0.4s, top 0.4s;
+}
+
+.item-container:hover .action {
+    top: 50px;
+}
+
+.action:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+</style>
+   <style>
+    .bubble {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+</style>
+ <div class="cookies-card" id="cookiesCard">
+        <p class="title">Cookies </p>
+        <p class="info">En utilisant ce site, vous acceptez automatiquement que nous utilisions des cookies.</p>
+       
+       
+        <button class="cta" onclick="acceptAllCookies()">J'accepte :) </button>
+    <a href="https://support.google.com/accounts/answer/61416?hl=fr&co=GENIE.Platform%3DAndroid" class="settings" target="_blank">Paramétres des Cookies </a>
+    </div>
+
+    <div id="confirmationMessage" class="bubble">
+    <p>Merci ! Votre contribution à une expérience utilisateur améliorée est très appréciée. Profitez de votre visite !</p>
+</div>
+
+    <script>
+    function acceptAllCookies() {
+        // Set a cookie to indicate that the user has accepted all cookies
+        document.cookie = "allCookiesAccepted=true; expires=Thu, 01 Jan 2030 00:00:00 UTC; path=/";
+
+        // Hide the cookies consent box
+        document.getElementById("cookiesCard").style.display = "none";
+ // Afficher le message de confirmation
+        document.getElementById("confirmationMessage").style.display = "block";
+       setTimeout(function() {
+            document.getElementById("confirmationMessage").style.display = "none";
+        }, 3000); // ajustez la durée en millisecondes selon vos préférences
+    }
+    
+</script>
+ {% endblock %}
+
+ </main>
+ {% endblock %}

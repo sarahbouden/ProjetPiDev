@@ -1,0 +1,68 @@
+{% extends "base-back.html.twig" %}
+{% block title %}Dashboard Offres et Partenarias {% endblock %}
+{% block body %}
+<main id="main" class="main">
+<!--table work-->
+
+    <div class="table-container">
+        
+<style>
+        .table-container {
+            position: relative;
+        }
+
+        .create-new-btn {
+            position: relative;
+            top: 0;
+            right: 0;
+            margin-bottom: 10px;
+            background-color: green;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .actions-icons a {
+            margin-right: 5px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>DateExp</th>
+                    <th>PhotoURL</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for offre in offres %}
+            {% set img = offre.PhotoUrl %}
+                <tr>
+                    <td>{{ offre.id }}</td>
+                    <td>{{ offre.NomOffre }}</td>
+                    <td>{{ offre.DescriptionOffre }}</td>
+                    <td>{{ offre.DateExp ? offre.DateExp|date('Y-m-d') : '' }}</td>
+                    <td><img style="height:50px;width:50px;" src="{{ asset(img) }}"></td>
+                    <td class="actions-icons">
+                        <a href="{{ path('app_off_show', {'id': offre.id}) }}"><i class="fas fa-eye"></i></a>
+                        <a href="{{ path('app_off_edit', {'id': offre.id}) }}"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('app_off_new') }}" class="create-new-btn">Create new</a>
+    </div>
+</main>
+
+{% endblock %}

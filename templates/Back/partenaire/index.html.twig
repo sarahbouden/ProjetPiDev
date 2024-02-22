@@ -1,0 +1,73 @@
+{% extends "base-back.html.twig"%}
+{% block title %}Dashboard Offres et Partenarias {% endblock %}
+{% block body %}
+  <main id="main" class="main">
+
+ <section class="section dashboard">
+    <style>
+        .table-container {
+            position: relative;
+        }
+
+        .create-new-btn {
+            position: relative;
+            top: 0;
+            right: 0;
+            margin-bottom: 10px;
+            background-color: green;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .actions-icons a {
+            margin-right: 5px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+
+    <div class="table-container">
+        
+
+        <table class="table">
+         <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomP</th>
+                <th>TypeP</th>
+                <th>DescriptionP</th>
+                <th>PhotoURL</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+            
+            <tbody>
+            {% for partenaire in partenaires %}
+              {% set img = partenaire.PhotoUrl %}
+                <tr>
+                    <td>{{ partenaire.id }}</td>
+                    <td>{{ partenaire.NomP }}</td>
+                    <td>{{ partenaire.TypeP }}</td>
+                    <td>{{ partenaire.DescriptionP }}</td>
+                   <td><img style="height:50px;width:50px;" src="{{ asset(img) }}"></td>
+                    
+                    <td class="actions-icons">
+                        <a href="{{ path('app_partenaire_show', {'id': partenaire.id}) }}"><i class="fas fa-eye"></i></a>
+                        <a href="{{ path('app_partenaire_edit', {'id': partenaire.id}) }}"><i class="fas fa-edit"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+         <a href="{{ path('app_partenaire_new') }}" class="create-new-btn">Create new</a>
+    </div>
+</section>
+
+  </main><!-- End #main -->
+  {% endblock %}

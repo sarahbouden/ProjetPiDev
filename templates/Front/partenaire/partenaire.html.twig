@@ -1,0 +1,42 @@
+{% extends "base-front.html.twig" %}
+{% block body %}
+<link href="{{asset('frontTemp/css/partenaire.css')}}" rel="stylesheet">
+  <main id="main">
+
+ <h3 class="text-center" style="margin-top: 50px; position: relative;">
+            <span class="left-line"></span> NOS PARTENAIRES <span class="right-line"></span>
+        </h3>
+   
+
+    <div class="billeterie-container">
+    {% for partenaire in partenaires %}
+        <div class="item-container">
+        <button class="action">CHOISIR</button>
+
+            <div class="image-container"style=style="margin-top: 20px; margin-left: 50px;">
+                    <a href="{{ partenaire.PhotoUrl }}" target="_blank">
+                        <img src="{{ partenaire.PhotoUrl }}" alt="partenaire Image" class="img-fluid rounded"style="width: 90%; height: 90%;">
+                    </a>
+                </div>
+            
+            <div class="body-container">
+              <div class="overlay"style="width: 100%; height: auto;"></div>
+
+                    
+                <div class="event-info">
+                    <p class="title">{{ partenaire.getNomP() }}</p>
+                    
+                    <div class="separator"></div>
+                    <p class="info"><strong>Type:</strong> {{ partenaire.getTypeP() }}</p>
+                    <p class="info"><strong>Description:</strong> {{ partenaire.getDescriptionP() }}</p>
+                    
+                </div>
+              
+                
+            </div>
+        </div>
+    {% endfor %}
+</div>
+ </main><!-- End #main -->
+{% endblock %}
+ 

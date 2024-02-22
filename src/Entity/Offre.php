@@ -5,6 +5,8 @@ use App\Entity\Partenaire;
 use App\Repository\OffreRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: OffreRepository::class)]
 class Offre
@@ -14,17 +16,24 @@ class Offre
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank(message:"Veuillez saisir le nom de l'offre.")]
     #[ORM\Column(length: 255)]
     private ?string $NomOffre = null;
 
+    #[Assert\NotBlank(message:"Veuillez saisir la description de l'offre.")]
     #[ORM\Column(length: 255)]
     private ?string $DescriptionOffre = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $DateExp = null;
 
+    #[Assert\NotBlank(message:"Veuillez saisir le partenaire.")]
     #[ORM\ManyToOne(inversedBy: 'offres')]
     private ?Partenaire $Partenaire = null;
+
+    #[Assert\NotBlank(message:"Veuillez importer une photo.")]
+    #[ORM\Column(length: 255)]
+    private ?string $PhotoURL = null;
 
     public function getId(): ?int
     {
@@ -66,7 +75,7 @@ class Offre
 
         return $this;
     }
-
+    
     public function getPartenaire(): ?Partenaire
     {
         return $this->Partenaire;
@@ -78,4 +87,17 @@ class Offre
 
         return $this;
     }
+
+    public function getPhotoURL(): ?string
+    {
+        return $this->PhotoURL;
+    }
+
+    public function setPhotoURL(string $PhotoURL): static
+    {
+        $this->PhotoURL = $PhotoURL;
+
+        return $this;
+    }
+    
 }

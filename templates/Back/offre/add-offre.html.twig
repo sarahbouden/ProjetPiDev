@@ -1,0 +1,61 @@
+{% extends "base-back.html.twig"%}
+{% block title %}Dashboard Offres et Partenarias {% endblock %}
+{% block body %}
+<main id="main" class="main">
+<!--table work-->
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}}) }}
+
+    <div class="form-group">
+        {{ form_label(form.NomOffre, 'Offer Name', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.NomOffre, {'attr': {'class': 'form-control'}}) }}
+        {% if form_errors(form.NomOffre) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.NomOffre) }}</small>
+            {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.DescriptionOffre, 'Offer Description', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.DescriptionOffre, {'attr': {'class': 'form-control'}}) }}
+        {% if form_errors(form.DescriptionOffre) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.DescriptionOffre) }}</small>
+            {% endif %}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.DateExp, 'Expire Date', {'label_attr': {'class': 'control-label'}}) }}
+      {{ form_widget(form.DateExp, {'attr': {'class': 'form-control'}}) }}
+      {% if form_errors(form.DateExp) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.DateExp) }}</small>
+            {% endif %}
+    </div>
+
+
+    <div class="form-group">
+        {{ form_label(form.Partenaire, 'Partner', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.Partenaire, {'attr': {'class': 'form-control'}}) }}
+        {% if form_errors(form.Partenaire) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.Partenaire) }}</small>
+            {% endif %}
+    </div>
+
+    <div class="form-group">
+        {{ form_label(form.PhotoURL, 'Photo', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.PhotoURL, {'attr': {'class': 'form-control'}}) }}
+        {% if form_errors(form.PhotoURL) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.PhotoURL) }}</small>
+            {% endif %}
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    {{ form_end(form) }}
+      
+
+        
+    
+</section>
+
+
+</main>
+
+{% endblock %}

@@ -6,6 +6,7 @@ use App\Repository\PartenaireRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PartenaireRepository::class)]
 class Partenaire
@@ -15,17 +16,24 @@ class Partenaire
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\NotBlank(message:"Veuillez saisir le nom paretenaire.")]
     #[ORM\Column(length: 255)]
     private ?string $NomP = null;
 
+    #[Assert\NotBlank(message:"Veuillez saisir le type de partenaire.")]
     #[ORM\Column(length: 255)]
     private ?string $TypeP = null;
-
+    
+    #[Assert\NotBlank(message:"Veuillez saisir le description de partenaire.")]
     #[ORM\Column(length: 255)]
     private ?string $DescriptionP = null;
 
     #[ORM\OneToMany(mappedBy: 'Partenaire', targetEntity: Offre::class)]
     private Collection $offres;
+
+    #[Assert\NotBlank(message:"Veuillez saisir une photo.")]
+    #[ORM\Column(length: 255)]
+    private ?string $PhotoUrl = null;
 
     public function __construct()
     {
@@ -99,6 +107,20 @@ class Partenaire
                 $offre->setPartenaire(null);
             }
         }
+
+        return $this;
+    }public function __toString():string{
+        return $this->id;
+    }
+
+    public function getPhotoUrl(): ?string
+    {
+        return $this->PhotoUrl;
+    }
+
+    public function setPhotoUrl(string $PhotoUrl): static
+    {
+        $this->PhotoUrl = $PhotoUrl;
 
         return $this;
     }

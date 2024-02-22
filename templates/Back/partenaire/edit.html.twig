@@ -1,0 +1,40 @@
+{% extends "base-back.html.twig"%}
+{% block title %}Dashboard Offres et Partenarias {% endblock %}
+{% block body %}
+<main id="main" class="main">
+ {{ form_start(form) }}
+
+    <div class="form-group">
+        {{ form_label(form.NomP, 'Partner Name', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.NomP, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.TypeP, 'Partner Type', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.TypeP, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.DescriptionP, 'Partner Description', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.DescriptionP, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    
+
+
+
+
+    <div class="form-group">
+        {{ form_label(form.PhotoURL, 'Photo', {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_widget(form.PhotoURL, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+    {{ form_end(form) }}
+        
+
+        
+    </div>
+</section>
+
+  </main>
+  {% endblock %}

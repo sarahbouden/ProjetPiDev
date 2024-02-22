@@ -1,0 +1,62 @@
+{% extends "base-back.html.twig"%}
+{% block title %}Dashboard Offres et Partenarias {% endblock %}
+{% block body %}
+<main id="main" class="main">
+<div class="card-body card-block">
+{{ form_start(form,{'attr':{'novalidate':'novalidate'}},{'attr':{'class':'form-horizontal'}}) }}
+    
+    <div class="row form-group">
+        <div class="col col-md-3">
+            {{ form_label(form.NomP,"Nom Partenaire :") }}
+        </div>
+        <div class="col-12 col-md-9">
+            {{ form_widget(form.NomP,{'attr':{'class':'form-control'}})}}
+            {% if form_errors(form.NomP) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.NomP) }}</small>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <div class="row form-group">
+        <div class="col col-md-3">
+            {{ form_label(form.TypeP,"Type Partenaire :") }}
+        </div>
+        <div class="col-12 col-md-9">
+            {{ form_widget(form.TypeP,{'attr':{'class':'form-control'}})}}
+            {% if form_errors(form.TypeP) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.TypeP) }}</small>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <div class="row form-group">
+        <div class="col col-md-3">
+            {{ form_label(form.DescriptionP,"Description Partenaire :") }}
+        </div>
+        <div class="col-12 col-md-9">
+            {{ form_widget(form.DescriptionP,{'attr':{'class':'form-control'}})}}
+            {% if form_errors(form.DescriptionP) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.DescriptionP) }}</small>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <div class="row form-group">
+        <div class="col col-md-3">
+            {{ form_label(form.PhotoURL,"Photo :") }}
+        </div>
+        <div class="col-12 col-md-9">
+            {{ form_widget(form.PhotoURL,{'attr':{'class':'form-control'}})}}
+            {% if form_errors(form.PhotoURL) is not empty %}
+                <small class="form-text text-muted">{{ form_errors(form.PhotoURL) }}</small>
+            {% endif %}
+        </div>
+    </div>
+    <br>
+    <div align="center" class="card-footer">
+        <button class="btn btn-outline-success btn-sm">{{ button_label|default('Add') }}</button>
+    </div>
+{{ form_end(form) }}
+</div>
+  </main><!-- End #main -->
+  {% endblock %}
