@@ -7,8 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+<<<<<<< HEAD
 use Symfony\Component\Validator\Constraints as Assert; 
 
+=======
+>>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
 
 #[ORM\Entity(repositoryClass: ChallengeRepository::class)]
 class Challenge
@@ -18,6 +21,7 @@ class Challenge
     #[ORM\Column]
     private ?int $id = null;
 
+<<<<<<< HEAD
     #[Assert\NotBlank (message: "Titre is required")]
     #[Assert\Length(max: 255)]
     #[ORM\Column(length: 255, nullable: false)]
@@ -51,6 +55,24 @@ class Challenge
     
     #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'challenges')]
    
+=======
+    #[ORM\Column(length: 255)]
+    private ?string $TitreCh = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $DateDebutCh = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $DateFinCh = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $ObjectifCh = null;
+
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'challenges')]
+    private Collection $Participants;
+
+    #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'challenges')]
+>>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
     private Collection $Activity;
 
     public function __construct()
@@ -68,10 +90,13 @@ class Challenge
     {
         return $this->TitreCh;
     }
+<<<<<<< HEAD
     public function __toString(): string
     {
         return $this->getTitreCh() ?: 'N/A';
     }
+=======
+>>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
 
     public function setTitreCh(string $TitreCh): static
     {
@@ -123,8 +148,11 @@ class Challenge
     {
         return $this->Participants;
     }
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
 
     public function addParticipant(User $participant): static
     {

@@ -73,6 +73,7 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   padding: 20px 0;
+<<<<<<< HEAD
   background: #000;
 }
 
@@ -82,6 +83,17 @@ h6 {
 
 #header.header-scrolled {
   background: #000;
+=======
+  background: rgba(55, 64, 85, 0.9);
+}
+
+#header.header-transparent {
+  background: transparent;
+}
+
+#header.header-scrolled {
+  background: rgba(55, 64, 85, 0.9);
+>>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
   padding: 15px 0;
 }
 
@@ -1545,6 +1557,7 @@ section {
 #footer .social-links a:hover {
   background: #ffce3a;
   text-decoration: none;
+<<<<<<< HEAD
 }
 .card {
   margin: 50px;
@@ -1553,4 +1566,6 @@ section {
 .card img {
   max-width: 100%;
   height: auto;
+=======
+>>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
 }

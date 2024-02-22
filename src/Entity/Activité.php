@@ -2,49 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\ActiviteRepository;
+use App\Repository\ActivitéRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-<<<<<<< HEAD
-use Symfony\Component\Validator\Constraints as Assert; 
 
-=======
->>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
-
-#[ORM\Entity(repositoryClass: ActiviteRepository::class)]
-class Activite
+#[ORM\Entity(repositoryClass: ActivitéRepository::class)]
+class Activité
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-<<<<<<< HEAD
-    
-
-    #[Assert\NotBlank (message: "Nom is required")]
-    #[Assert\Length(max: 255)]
-    #[ORM\Column(length: 255)]
-    private ?string $NomAct = null;
-
-    #[Assert\NotBlank (message: "Type is required")]
-    #[Assert\Length(max: 255)]
-    #[ORM\Column(length: 255)]
-    private ?string $TypeAct = null;
-
-    #[Assert\NotBlank(message: "Location is required")]
-    #[Assert\Length(max: 255)]
-    #[ORM\Column(length: 255)]
-    private ?string $LocationAct = null;
-
-    #[Assert\NotBlank(message: "Description is required")]
-    #[Assert\Length(max: 255)]
-    #[ORM\Column(length: 255)]
-    private ?string $DescriptionAct = null;
-
-    #[Assert\NotBlank(message: "URL is required")]
-    #[Assert\Length(max: 255)]
-=======
 
     #[ORM\Column(length: 255)]
     private ?string $NomAct = null;
@@ -58,7 +27,6 @@ class Activite
     #[ORM\Column(length: 255)]
     private ?string $DescriptionAct = null;
 
->>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
     #[ORM\Column(length: 255)]
     private ?string $PhotoUrl = null;
 
@@ -79,13 +47,6 @@ class Activite
     {
         return $this->NomAct;
     }
-<<<<<<< HEAD
-    public function __toString(): string
-    {
-        return $this->getNomAct() ?: 'N/A';
-    }
-=======
->>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
 
     public function setNomAct(string $NomAct): static
     {

@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "44f5e5b4c6ec2650f87fe8271ce7fdd0",
+=======
+    "content-hash": "11624e6b6212e479aa5e84d86c468e33",
+>>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2040,6 +2044,7 @@
             "time": "2021-07-14T16:41:46+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "sensio/framework-extra-bundle",
             "version": "v6.2.10",
             "source": {
@@ -2118,6 +2123,8 @@
             "time": "2023-02-24T14:57:12+00:00"
         },
         {
+=======
+>>>>>>> 8d8c98e677bd1aafc5db9baa9148b87da6a51e00
             "name": "symfony/amqp-messenger",
             "version": "v5.4.35",
             "source": {
