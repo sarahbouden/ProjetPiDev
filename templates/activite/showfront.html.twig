@@ -1,0 +1,53 @@
+{% extends 'base-front.html.twig' %}
+
+{% block body %}
+<main classe="main" id="main">
+    <div class="container ">
+    <table   class="table table-bordered table-striped">
+        <h1  class="text-right mt-5 mb-2 text-warning"><em>Détails de l'Activité</em></h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 order-md-last">
+            
+                <div class="card-body text-cright">
+                    <div class="mb-3">
+                        <strong><em><u>Nom de l'Activité:</u></em></strong>
+                        <p>{{ activit.NomAct }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong><em><u>Type d'Activité:</u></em></strong>
+                        <p>{{ activit.TypeAct }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong><em><u>Location de l'Activité:</u></em></strong>
+                        <p>{{ activit.LocationAct }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong><em><u>Description de l'Activité:</u></em></strong>
+                        <p>{{ activit.DescriptionAct }}</p>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="{{ path('app_activite_indexfront') }}" class="btn btn-warning btn-sm"><strong><em>Retour à la liste des activités</strong></em></a>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="col-md-4">
+                
+                <div class="card-body text-center">
+                    <a href="{{ activit.PhotoUrl }}" target="_blank">
+                        <img src="{{ activit.PhotoUrl }}" alt="Activite Image" class="img-fluid rounded">
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        </table>
+    </div>
+<main classe="main" id="main">
+{% endblock %}

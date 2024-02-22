@@ -1,0 +1,63 @@
+
+
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block body %}
+<main classe="main" id="main">
+    <div id="footer" class="row justify-content-center" >
+    <div class="col-md-8">
+       <div class=" text-black text-right py-4">
+                        <h1  class="text-right mt-5 mb-2 text-warning " ><strong><em>Ajouter une Activite</em></strong></h1>
+                    </div>
+
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        <div class="mb-3">
+            {{ form_label(form.NomAct) }}
+            {{ form_widget(form.NomAct, {'attr': {'class': 'form-control'}}) }}
+             {{form_errors(form.NomAct)}}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.TypeAct) }}
+            {{ form_widget(form.TypeAct, {'attr': {'class': 'form-control'}}) }}
+             {{form_errors(form.TypeAct)}}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.LocationAct) }}
+            {{ form_widget(form.LocationAct, {'attr': {'class': 'form-control'}}) }}
+             {{form_errors(form.LocationAct)}}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.DescriptionAct) }}
+            {{ form_widget(form.DescriptionAct, {'attr': {'class': 'form-control'}}) }}
+             {{form_errors(form.DescriptionAct)}}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.PhotoUrl) }}
+            {{ form_widget(form.PhotoUrl, {'attr': {'class': 'form-control'}}) }}
+             {{form_errors(form.PhotoUrl)}}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.challenges) }}
+            {{ form_widget(form.challenges, {'attr': {'class': 'form-control'}}) }}
+             {{form_errors(form.challenges)}}
+        </div>
+
+        <!-- Ajoutez d'autres champs du formulaire en fonction de votre entité -->
+
+        <button type="submit" class="btn btn-warning btn-sm"><strong><em>Ajouter</em></strong></button>
+         <a href="{{ path('app_activite_index') }}" type="submit" class="btn btn-warning btn-sm"><strong><em>Retour à la Liste</em></strong></a>
+
+        {{ form_end(form) }}
+    </div>
+    </div>
+    </main> 
+
+   
+{% endblock %}
+
+

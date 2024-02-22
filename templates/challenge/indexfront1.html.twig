@@ -1,0 +1,34 @@
+{% extends 'base-front.html.twig' %}
+
+{% block body %}
+<main classe="main" id="main">
+    <div class="container">
+        <h1  class="text-right mt-5 mb-2 text-warning">Liste des Challenges</h1>
+
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+            {% for challenge in challenge %}
+                <div class="col">
+                    <div class="card h-70">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ challenge.TitreCh }}</h5>
+                            <p class="card-text"><strong>Start Date:</strong> {{ challenge.DateDebutCh ? challenge.DateDebutCh|date('Y-m-d') : '' }}</p>
+                            <p class="card-text"><strong>End Date:</strong> {{ challenge.DateFinCh ? challenge.DateFinCh|date('Y-m-d') : '' }}</p>
+                            <p class="card-text"><strong>Objective:</strong> {{ challenge.ObjectifCh }}</p>
+
+                            <strong>Activities:</strong>
+                            <ul>
+                                {% for activity in challenge.getActivity() %}
+                                    <li>{{ activity.NomAct }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="card-footer text-right">
+                            <a href="{{ path('challenge_showfront', {'id': challenge.id}) }}" class="btn btn-warning btn-sm"><strong><em>Afficher les détails</em></strong></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block body %}
+<main classe="main" id="main">
+   <div class="container">
+      <div id="footer" >
+         
+         <h1   class="text-right mt-5 mb-2 text-warning"><strong><em>details de Challenges</em></strong></h1>
+
+           <table class="table table-bordered table-striped">
+             <thead class="table-success">
+                <tr>
+                   <th>Id</th>
+                   <th>TitreCh</th>
+                   <th>DateDebutCh</th>
+                   <th>DateFinCh</th>
+                   <th>ObjectifCh</th>
+                   <th>Participant</th>
+              </thead>     
+                </tr> 
+                <tr> 
+                   <td>{{ challenge.id }}</td>
+                   <td>{{ challenge.TitreCh }}</td>
+                   <td>{{ challenge.DateDebutCh ? challenge.DateDebutCh|date('Y-m-d') : '' }}</td>
+                   <td>{{ challenge.DateFinCh ? challenge.DateFinCh|date('Y-m-d') : '' }}</td>
+                   <td>{{ challenge.ObjectifCh }}</td>
+                   
+                </tr>
+             
+           </table>
+   </div class="container">
+                <td><a href="{{ path('app_challenge_index') }}"  class="btn btn-warning btn-sm"><strong><em>back to list</a></td>
+                <td><a href="{{ path('app_challenge_edit', {'id': challenge.id}) }}"  class="btn btn-warning btn-sm"><strong><em>edit</em></strong></a></td>
+                {{ include('challenge/_delete_form.html.twig') }}
+</main>
+{% endblock %}

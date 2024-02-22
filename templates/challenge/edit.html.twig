@@ -1,0 +1,77 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block body %}
+<main classe="main" id="main">
+    
+        <div id="footer"  class="row justify-content-center">
+            <div class="col-md-8">
+                
+                    <div class=" text-black text-right py-4">
+                        <h1 class="text-right mt-5 mb-2 text-warning" ><strong><em>Modifier le Challenge</em></strong></h1>
+                    </div>
+
+                    
+                        
+                            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                            <div class="mb-3">
+                                {{ form_label(form.TitreCh, 'Titre du Challenge') }}
+                                {{ form_widget(form.TitreCh, {'attr': {'class': 'form-control'}}) }}
+                                {{form_errors(form.TitreCh)}}
+                                
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_label(form.DateDebutCh, 'Date de Debut  du Challenge') }}
+                                {{ form_widget(form.DateDebutCh, ) }}
+                                {{form_errors(form.DateDebutCh)}}
+                               
+                            </div>
+                           
+                              <div class="mb-3">
+                              
+                                {{ form_label(form.DateFinCh, 'Date de fin du Challenge') }}
+                                {{ form_widget(form.DateFinCh, ) }}
+                                {{form_errors(form.DateFinCh)}}
+                                
+                            </div>
+                              <div class="mb-3">
+                                {{ form_label(form.ObjectifCh, 'Objectif du Challenge') }}
+                                {{ form_widget(form.ObjectifCh, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+                               {{form_errors(form.ObjectifCh)}}
+                            </div>
+                             <div class="mb-3">
+                                {{ form_label(form.Activity, 'les activites du Challenge') }}
+                                {{ form_widget(form.Activity, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+                                {{form_errors(form.Activity)}}
+                            </div>
+                             <div class="mb-3">
+                                {{ form_label(form.Participants, 'Les Participant du Challenge') }}
+                                {{ form_widget(form.Participants, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+                               {{form_errors(form.Participants)}}
+                            </div>
+
+                            <!-- Ajoutez d'autres champs selon vos besoins -->
+
+                            <div class="text-center">
+                                <button type="submit"class="btn btn-warning btn-sm" ><strong><em>Mettre à jour le Challenge</em></strong></button>
+                            </div>
+
+                            {{ form_end(form) }}
+                        
+                    
+
+                    <div class="card-footer text-center bg-white">
+                        <a href="{{ path('app_challenge_index') }}" class="btn btn-warning btn-sm"><strong><em>Retour à la Liste</em></strong></a>
+                        
+                    </div>
+                
+                
+
+                {{ include('challenge/_delete_form.html.twig') }}
+            </div>
+        </div>
+</main>    
+{% endblock %}

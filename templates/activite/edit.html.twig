@@ -1,0 +1,75 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block body %}
+<main classe="main" id="main">
+    
+        <div id="footer"  class="row justify-content-center">
+            <div class="col-md-8">
+                
+                    <div class=" text-black text-right py-4">
+                        <h1   class="text-right mt-5 mb-2 text-warning" ><strong><em>Modifier l'activite</em></strong></h1>
+                    </div>
+
+                    
+                        
+                            {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+                            <div class="mb-3">
+                                {{ form_label(form.NomAct, 'Nom de l"activite') }}
+                                {{ form_widget(form.NomAct, {'attr': {'class': 'form-control'}}) }}
+                                {{form_errors(form.NomAct)}}
+                            </div>
+
+                            <div class="mb-3">
+                                {{ form_label(form.TypeAct, 'Type d"activite') }}
+                                {{ form_widget(form.TypeAct,{'attr': {'class': 'form-control'}} ) }}
+                                {{form_errors(form.TypeAct)}}
+                            </div>
+                           
+                              <div class="mb-3">
+                              
+                                {{ form_label(form.LocationAct, 'Location de l"activite') }}
+                                {{ form_widget(form.LocationAct, {'attr': {'class': 'form-control'}}) }}
+                                {{form_errors(form.LocationAct)}}
+                            </div>
+                              <div class="mb-3">
+                                {{ form_label(form.DescriptionAct, 'Description de l"activite') }}
+                                {{ form_widget(form.DescriptionAct, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+                                {{form_errors(form.DescriptionAct)}}
+                            </div>
+                             <div class="mb-3">
+                                {{ form_label(form.PhotoUrl, 'l"URL de L"image') }}
+                                {{ form_widget(form.PhotoUrl, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+                               {{form_errors(form.PhotoUrl)}}
+                            </div>
+                             <div class="mb-3">
+                                {{ form_label(form.challenges, 'Les Challenges de l"activite') }}
+                                {{ form_widget(form.challenges, {'attr': {'class': 'form-control', 'rows': 3}}) }}
+                                {{form_errors(form.challenges)}}
+                            </div>
+
+                           
+
+                            <div class="text-center">
+                                <button type="submit"class="btn btn-warning btn-sm " ><strong><em>Mettre à jour l'activite</em></strong></button>
+                            </div>
+
+                            {{ form_end(form) }}
+                        
+                    
+
+                    <div class="card-footer text-center bg-white">
+                        <a href="{{ path('app_activite_index') }}" class="btn btn-warning btn-sm"><strong><em>Retour à la Liste</em></strong></a>
+                        
+                    </div>
+                
+                
+
+                {{ include('activite/_delete_form.html.twig') }}
+            </div>
+        </div>
+</main>
+{% endblock %}
+

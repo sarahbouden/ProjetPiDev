@@ -1,0 +1,54 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block body %}
+<main classe="main" id="main">
+<div  id="footer" class="container">
+    <h1  class="text-right mt-5 mb-2 text-warning">La Liste des Challenges</h1>
+
+    <div  class="table-responsive">
+        <table   class="table table-bordered table-striped">
+            <thead class="table-success">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Objective</th>
+                    <th>Activities</th>
+                    <th>Participant</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for challenge in challenges %}
+                <tr>
+                    <td>{{ challenge.id }}</td>
+                    <td>{{ challenge.TitreCh }}</td>
+                    <td>{{ challenge.DateDebutCh ? challenge.DateDebutCh|date('Y-m-d') : '' }}</td>
+                    <td>{{ challenge.DateFinCh ? challenge.DateFinCh|date('Y-m-d') : '' }}</td>
+                    <td>{{ challenge.ObjectifCh }}</td>
+                    <td>
+                        {% for activity in challenge.getActivity() %}
+                            {{ activity.NomAct }}<br>
+                        {% endfor %}
+                    </td>
+                    <td> </td>
+                    <td>
+                        <a href="{{ path('app_challenge_show', {'id': challenge.id}) }}" class="btn btn-warning btn-sm"><strong><em>Show</em></strong></a>
+                        <a href="{{ path('app_challenge_edit', {'id': challenge.id}) }}" class="btn btn-warning btn-sm"><strong><em>Edit</em></strong></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7" class="text-center">No records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{{ path('app_challenge_new') }}" class="btn btn-warning"><strong><em>Create New</em></strong></a>
+</main>
+{% endblock %}

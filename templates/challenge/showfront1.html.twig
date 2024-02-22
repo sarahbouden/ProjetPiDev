@@ -1,0 +1,43 @@
+{% extends 'base-front.html.twig' %}
+
+{% block body %}
+<main classe="main" id="main">
+    <div class="container">
+        <h1   class="text-right mt-5 mb-2 text-warning">Détails du Challenge</h1>
+
+        <table class="table table-bordered">
+            <tbody>
+               
+                <tr>
+                    <th scope="row" class="w-25">TitreCh</th>
+                    <td>{{ challeng.TitreCh }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="w-25">DateDebutCh</th>
+                    <td>{{ challeng.DateDebutCh|date('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="w-25">DateFinCh</th>
+                    <td>{{ challeng.DateFinCh|date('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="w-25">ObjectifCh</th>
+                    <td>{{ challeng.ObjectifCh }}</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="w-25">Activités</th>
+                    <td>
+                        {% for activity in challeng.getActivity() %}
+                            {{ activity.NomAct }}<br>
+                        {% endfor %}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="text-center">
+            <a href="{{ path('indexfront') }}" class="btn btn-warning btn-sm"><strong><em>Retour à la liste des challenges</em></strong></a>
+        </div>
+    </div>
+    </main>
+{% endblock %}

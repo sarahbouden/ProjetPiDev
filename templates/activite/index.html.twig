@@ -1,0 +1,56 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+{% block body %}
+<main classe="main" id="main">
+    <div  id="footer" class="container">
+        <h1  class="text-right mt-5 mb-2 text-warning">Liste des Activités</h1>
+        <div  class="table-responsive">
+        
+
+        {% if activites|length > 0 %}
+           <table  class="table table-bordered table-striped">
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">NomAct</th>
+                        <th scope="col">TypeAct</th>
+                        <th scope="col">LocationAct</th>
+                        <th scope="col">DescriptionAct</th>
+                        <th scope="col">PhotoUrl</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for activite in activites %}
+                        <tr>
+                            <td>{{ activite.id }}</td>
+                            <td>{{ activite.NomAct }}</td>
+                            <td>{{ activite.TypeAct }}</td>
+                            <td>{{ activite.LocationAct }}</td>
+                            <td>{{ activite.DescriptionAct }}</td>
+                            <td>
+                                {% if activite.PhotoUrl %}
+                                    <img src="{{ activite.PhotoUrl }}" alt="{{ activite.NomAct }}" style="max-width: 100px;">
+                                {% else %}
+                                    No Photo
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('app_activite_show', {'id': activite.id}) }}" class="btn btn-info btn-sm">Voir</a>
+                                <a href="{{ path('app_activite_edit', {'id': activite.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        {% else %}
+            <p class="text-muted">Aucun enregistrement trouvé.</p>
+        {% endif %}
+
+        <a href="{{ path('app_activite_new') }}" class="btn btn-warning btn-sm">Créer Nouvelle Activité</a>
+    </div>
+    </main>
+{% endblock %}

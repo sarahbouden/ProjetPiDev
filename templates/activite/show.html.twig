@@ -1,0 +1,56 @@
+
+{% extends 'base-back.html.twig' %}
+
+{% block body %}
+<main classe="main" id="main">
+    <div id="footer" class="container mt-5">
+        <h1  class="text-right mt-5 mb-2 text-warning"><em>Détails de l'Activité</em></h1>
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 order-md-last">
+            
+                <div class="card-body text-cright">
+                    <div class="mb-3">
+                        <strong><em><u>Nom de l'Activité:</u></em></strong>
+                        <p>{{ activite.NomAct }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong><em><u>Type d'Activité:</u></em></strong>
+                        <p>{{ activite.TypeAct }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong><em><u>Location de l'Activité:</u></em></strong>
+                        <p>{{ activite.LocationAct }}</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <strong><em><u>Description de l'Activité:</u></em></strong>
+                        <p>{{ activite.DescriptionAct }}</p>
+                    </div>
+
+                    <div class="card-footer text-center">
+                        <a href="{{ path('app_activite_index') }}" class="btn btn-warning btn-sm"><strong><em>Retour à la liste</strong></em></a>
+                        <a href="{{ path('app_activite_edit', {'id': activite.id}) }}" class="btn btn-warning btn-sm"><strong><em>Modifier</strong></em></a>
+                        {{ include('activite/_delete_form.html.twig') }}
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="col-md-4">
+                
+                <div class="card-body text-center">
+                    <a href="{{ activite.PhotoUrl }}" target="_blank">
+                        <img src="{{ activite.PhotoUrl }}" alt="Activite Image" class="img-fluid rounded">
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    </main>
+{% endblock %}
+
+

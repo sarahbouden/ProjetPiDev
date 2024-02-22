@@ -1,0 +1,36 @@
+{% extends 'base-front.html.twig' %}
+
+{% block body %}
+<main classe="main" id="main">
+    <div class="container">
+       <h1 class="text-right mt-5 mb-2 text-warning">Liste des Activités</h1>
+
+        <div class="row row-cols-1 row-cols-md-3 g-3">
+        
+
+            {% for activite in activit %}
+                <div class="col">
+                    <div class="card h-70">
+                        <img src="{{ activite.PhotoUrl }}" alt="{{ activite.NomAct }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ activite.NomAct }}</h5>
+                            <p class="card-text"><strong>Type :</strong> {{ activite.TypeAct }}</p>
+                            <p class="card-text"><strong>Lieu :</strong> {{ activite.LocationAct }}</p>
+                            <p class="card-text"><strong>Description :</strong> {{ activite.DescriptionAct }}</p>
+                              <strong>Challenges:</strong>
+                            <ul>
+                                {% for challenge in activite.getChallenges() %}
+                                    <li>{{ challenge.TitreCh }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        <div class="card-footer text-right">
+                            <a href="{{ path('showfront', {'id': activite.id}) }}" class="btn btn-primary ms-auto">Afficher les détails</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}
