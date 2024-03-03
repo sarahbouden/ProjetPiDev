@@ -38,6 +38,7 @@ class Reservation
     #[ORM\OneToMany(mappedBy: 'reservation', targetEntity: User::class)]
     private Collection $Client;
 
+   
     public function __construct()
     {
         $this->Client = new ArrayCollection();
@@ -149,4 +150,5 @@ class Reservation
 
         return $this;
     }
+   
 }

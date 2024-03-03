@@ -4,9 +4,11 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserType extends AbstractType
 {
@@ -18,7 +20,8 @@ class UserType extends AbstractType
             ->add('Email')
             ->add('Adresse')
             ->add('NumTel')
-            ->add('Pwd')
+            ->add('Password', PasswordType::class)
+            ->add('VPwd', PasswordType::class)
             /*->add('Role')
             ->add('reservation')
             ->add('challenges')

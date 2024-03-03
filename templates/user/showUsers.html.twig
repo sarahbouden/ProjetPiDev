@@ -39,8 +39,8 @@ User Dashboard
                     <td>{{a.Email}}</td>
                     <td>{{a.Adresse}}</td>
                     <td>{{a.NumTel}}</td>
-                    <td>{{a.Pwd}}</td>
-                    <td>{{a.Role}}</td>
+                    <td>{{a.password}}</td>
+                    <td>{{a.roles[0]}}</td>
                     <td><a href="{{path('updateuser',{'id':a.id})}}"><button type="button" class="btn btn-primary">edit</button></td>
                     <td><a href="{{path('deleteuser',{'id':a.id})}}"><button type="button" class="btn btn-danger">delete</button></a></td>
                   </tr>

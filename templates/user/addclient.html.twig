@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('backTemp/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('backTemp/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('backTemp/img/TWlogo.png')}}" rel="icon">
+  <link href="{{asset('backTemp/img/TWlogo.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -50,7 +50,7 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                  <img src="{{asset('backTemp/img/logo.png')}}" alt="">
+                  <img src="{{asset('backTemp/img/TWlogo.png')}}" alt="">
                   <span class="d-none d-lg-block">NiceAdmin</span>
                 </a>
               </div><!-- End Logo -->
@@ -64,7 +64,7 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
                   {% form_theme f 'bootstrap_5_layout.html.twig' %}
-                    {{ form_start(f,{'attr':{'classs':'form-horizontal'}})}}
+                    {{ form_start(f,{'attr':{'nonvalidate':'nonvalidate'}})}}
                   
                     <div class="col-12">
                     
@@ -97,6 +97,7 @@
                     {{ form_label(f.Email,"Email") }}
                     {{ form_widget(f.Email) }}
                     {{ form_errors(f.Email) }}
+
                     <!--
                       <label for="yourUsername" class="form-label">Username</label>
                       <div class="input-group has-validation">
@@ -128,16 +129,26 @@
                     </div>
                     <div class="col-12">
                     
-                    {{ form_label(f.Pwd,"Password") }}
-                    {{ form_widget(f.Pwd) }}
-                    {{ form_errors(f.Pwd) }}
+                    {{ form_label(f.Password,"Password") }}
+                    {{ form_widget(f.Password) }}
+                    {{ form_errors(f.Password) }}
 
                     <!--
                       <label for="yourNumTel" class="form-label">NumTel</label>
                       <input type="text" name="NumTel" class="form-control" id="yourNumTel" required>
                       <div class="invalid-feedback">Please enter your NumTel!</div>-->
                     </div>
+                    <div class="col-12">
+                    
+                    {{ form_label(f.VPwd,"Verify Password") }}
+                    {{ form_widget(f.VPwd) }}
+                    {{ form_errors(f.VPwd) }}
 
+                    <!--
+                      <label for="yourNumTel" class="form-label">NumTel</label>
+                      <input type="text" name="NumTel" class="form-control" id="yourNumTel" required>
+                      <div class="invalid-feedback">Please enter your NumTel!</div>-->
+                    </div>
                     <div class="col-12">
                     <!--
                       <label for="yourPassword" class="form-label">Password</label>
@@ -153,8 +164,7 @@
                       </div>
                     </div>
                     <div class="col-12">
-                    {{form_label(f.Create_an_account) }}
-                      <!--<button class="btn btn-primary w-100" type="submit">Create Account</button>-->
+                    {{form_label(f.Create_an_account)}} 
                     </div>
                     <div class="col-12">
                       <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
@@ -170,7 +180,7 @@
                 <!-- You can delete the links only if you purchased the pro version. -->
                 <!-- Licensing information: https://bootstrapmade.com/license/ -->
                 <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Designed by <a href="https://bootstrapmade.com/">TuniWonders</a>
               </div>
 
             </div>

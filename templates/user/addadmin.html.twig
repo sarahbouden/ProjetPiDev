@@ -11,14 +11,14 @@ Add User{% endblock %}
               <h5 class="card-title">Add an admin</h5>
 
 
-                  {% form_theme f 'bootstrap_5_layout.html.twig' %}
-                    {{ form_start(f,{'attr':{'classs':'form-horizontal'}})}}
+                    {{ form_start(f,{'attr':{'nonvalidate':'nonvalidate'}})}}
                   
                     <div class="col-12">
                     
                     {{ form_label(f.CIN,"CIN") }}
                     {{ form_widget(f.CIN) }}
                     {{ form_errors(f.CIN) }}
+
                     
                     </div>
                         
@@ -35,6 +35,7 @@ Add User{% endblock %}
                     {{ form_label(f.Email,"Email") }}
                     {{ form_widget(f.Email) }}
                     {{ form_errors(f.Email) }}
+
                     
                     </div>
                     <div class="col-12">
@@ -53,12 +54,18 @@ Add User{% endblock %}
                     </div>
                     <div class="col-12">
                     
-                    {{ form_label(f.Pwd,"Password") }}
-                    {{ form_widget(f.Pwd) }}
-                    {{ form_errors(f.Pwd) }}
+                    {{ form_label(f.Password,"Password") }}
+                    {{ form_widget(f.Password) }}
+                    {{ form_errors(f.Password) }}
 
                     </div>
+                    <div class="col-12">
+                    
+                    {{ form_label(f.VPwd,"verify Password") }}
+                    {{ form_widget(f.VPwd) }}
+                    {{ form_errors(f.VPwd) }}
 
+                    </div>
                     <div class="col-12">
                    {{form_label(f.Create_an_account) }}
                    {{ form_end(f) }}

@@ -10,13 +10,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserController extends AbstractController
 {
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     #[Route('/user', name: 'app_user')]
     public function index(): Response
     {
-        return $this->render('base-back.html.twig', [
+        return $this->render('base-front.html.twig', [
             'controller_name' => 'UserController',
         ]);
     }
@@ -28,9 +36,11 @@ class UserController extends AbstractController
         $form=$this->createForm(UserType::class,$Client);
         $form->handleRequest($request);
         if($form->isSubmitted()&& $form->isValid()){
-            $Client->setRole('Client');
+            $Client->setPassword($this->passwordHasher->hashPassword($Client, $Client->getPassword()));
+            $Client->setRoles(['ROLE_USER']);
             $em->persist($Client);
             $em->flush();
+            
         }
 
         return $this->render('user/addclient.html.twig', [
@@ -45,9 +55,11 @@ class UserController extends AbstractController
         $form=$this->createForm(UserType::class,$Admin);
         $form->handleRequest($request);
         if($form->isSubmitted()&& $form->isValid()){
-            $Admin->setRole('Admin');
+            //$Admin->setPassword($this->passwordHasher->hashPassword($Admin, $Admin->getPassword()));
+            $Admin->setRoles(['ROLE_ADMIN']);
             $em->persist($Admin);
             $em->flush();
+            return $this->redirectToRoute('showUsers');
         }
 
         return $this->render('user/addadmin.html.twig', [
@@ -73,6 +85,8 @@ class UserController extends AbstractController
         {
             $em->persist($User);
             $em->flush();
+            return $this->redirectToRoute('showUsers');
+
         }
         return $this->renderForm('user/updateUser.html.twig', [
             'f' => $form,
