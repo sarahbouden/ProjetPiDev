@@ -1,0 +1,41 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}New Recompense{% endblock %}
+
+{% block body %}
+    <h1>Create new Recompense</h1>
+    
+    {{ form_start(form, {'nonvalidate':'nonvalidate'}) }}
+
+    <div class="form-group" invalidate>
+        {{ form_label(form['NomRecp']) }}
+        {{ form_widget(form['NomRecp'], {'attr': {'class': 'form-control'}}) }}
+        {% set NomRecpError = form['NomRecp'].vars.submitted and form['NomRecp'].vars.value is empty and form_errors(form['NomRecp']) is not empty %}
+        {{form_errors(form.NomRec)}}
+    </div>
+
+    <div class="form-group" invalidate>
+        {{ form_label(form.Niveau) }}
+        {{ form_widget(form.Niveau, {'attr': {'class': 'form-control'}}) }}
+        {% set NiveauError = form.Niveau.vars.submitted and form.Niveau.vars.value is empty and form_errors(form.Niveau) is not empty %}
+         {{form_errors(form.Niveau)}}
+
+    </div>
+
+    <div class="form-group" invalidate>
+        {{ form_label(form['DescriptionRecp']) }}
+        {{ form_widget(form['DescriptionRecp'], {'attr': {'class': 'form-control'}}) }}
+        {% set DescriptionRecpError = form['DescriptionRecp'].vars.submitted and form['DescriptionRecp'].vars.value is empty and form_errors(form['DescriptionRecp']) is not empty %}
+        {{form_errors(form.DescriptionRecp)}}
+
+      
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-warning btn-sm" formnovalidate ><strong><em>Ajouter</em></strong></button>
+    </div>
+
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_recompense_index') }}">back to list</a>
+{% endblock %}

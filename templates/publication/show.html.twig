@@ -1,0 +1,38 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Publication{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+{% endblock %}
+{% block body %}
+    <h1>Publication</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ publication.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ publication.Titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ publication.Description }}</td>
+            </tr>
+            <tr>
+                <th>UrlRessource</th>
+                <td><img src="{{ asset('uploads/' ~ publication.UrlRessource) }}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_publication_index') }}">back to list</a>
+
+    <a href="{{ path('app_publication_edit', {'id': publication.id}) }}">edit</a>
+
+    {{ include('publication/_delete_form.html.twig') }}
+{% endblock %}

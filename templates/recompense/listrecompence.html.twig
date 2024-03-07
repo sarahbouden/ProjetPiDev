@@ -1,0 +1,29 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>NomRecp</th>
+        <th>Niveau</th>
+        <th>DescriptionRecp</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for recompense in recompenses %}
+        <tr>
+            <td>{{ recompense.id }}</td>
+            <td>{{ recompense.NomRecp }}</td>
+            <td>{{ recompense.Niveau }}</td>
+            <td>{{ recompense.DescriptionRecp }}</td>
+            <td>
+                <a href="{{ path('app_recompense_show', {'id': recompense.id}) }}">show</a>
+                <a href="{{ path('app_recompense_edit', {'id': recompense.id}) }}">edit</a>
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="5">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
